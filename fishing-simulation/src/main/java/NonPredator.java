@@ -9,4 +9,11 @@ public class NonPredator extends Fish{
         position_Y = rand.nextInt(rows);
         this.index = index;
     }
+
+    @Override
+    public String toString() {
+        return "NonPredatory fish no. " + index + " on position " +
+                "X=" + position_X +
+                " Y=" + position_Y + " exists!";
+    }
 }

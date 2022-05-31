@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.util.*;
 
-public class Simulation {
+public class Simulation{
     int columns;
     int rows;
 
@@ -25,9 +25,8 @@ public class Simulation {
 
         //Scanner in = new Scanner(System.in);
 
-        this.rows = 10;//in.nextInt();
-        this.columns = 10;//in.nextInt();
+        this.rows = 5;//in.nextInt();
+        this.columns = 13;//in.nextInt();
     }
-
 
 }
