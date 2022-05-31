@@ -19,7 +19,20 @@ public class MapPanel extends JPanel {
         //this.setDoubleBuffered(true);     don't know what does that actually do
     }
 
+        /*
+        JFrame window = new JFrame();
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setResizable(true);
+        window.setTitle("The Fish Empire");
 
+        MapPanel map = new MapPanel();
+        window.add(map);
+
+        window.pack();
+
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
+        */
 
 }
 
