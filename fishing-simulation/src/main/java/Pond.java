@@ -23,13 +23,13 @@ public class Pond{
 
     public void print(){
         System.out.println("There are " + nonSet.size() + " fish in the pond.");
-        Iterator i = nonSet.iterator();
+        //Iterator i = nonSet.iterator();
 
         for(int j = 0; j<5;j++){
             for(int k = 0; k<13; k++){
                 System.out.print(tab[j][k]);
             }
-            System.out.printf("\n");
+            System.out.println();
         }
     }
 
