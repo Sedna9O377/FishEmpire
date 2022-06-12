@@ -1,8 +1,9 @@
 import java.util.Random;
 
-public class NonPredator extends Fish{
+public class Predator extends Fish{
 
-    public NonPredator(int index, int rows, int columns){
+
+    public Predator(int index, int rows, int columns) {
         Random rand = new Random();
         position_X = rand.nextInt(columns);
         position_Y = rand.nextInt(rows);
@@ -11,7 +12,7 @@ public class NonPredator extends Fish{
 
     @Override
     public String toString() {
-        return "NonPredatory fish no. " + index + " on position " +
+        return "Predatory fish no. " + index + " on position " +
                 "X=" + position_X +
                 " Y=" + position_Y + " exists!";
     }
