@@ -14,8 +14,6 @@ public class Simulation{
 
         pond.populate(sim.fish_amount, sim.rows, sim.columns, sim.predator_percentage);
         pond.print(sim.rows, sim.columns);
-
-
     }
 
     public Simulation() {  //w przyszłości będzie tu input użytkownika
@@ -24,7 +22,7 @@ public class Simulation{
 
         this.rows = 10;//in.nextInt();
         this.columns = 30;//in.nextInt();
-        this.fish_amount = 320;
+        this.fish_amount = 290;
         this.predator_percentage = 50;
     }
 
