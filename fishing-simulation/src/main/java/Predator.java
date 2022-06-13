@@ -5,8 +5,8 @@ public class Predator extends Fish{
 
     public Predator(int index, int rows, int columns) {
         Random rand = new Random();
-        position_X = rand.nextInt(columns);
-        position_Y = rand.nextInt(rows);
+        position_X = rand.nextInt(rows);
+        position_Y = rand.nextInt(columns);
         this.index = index;
     }
 

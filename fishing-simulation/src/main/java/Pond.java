@@ -16,24 +16,25 @@ public class Pond{
 
         for(int i = 0; nonSet.size()+x < amount; i++){
             NonPredator hold = new NonPredator(i, rows, columns);
-            if(tab[hold.position_Y][hold.position_X]!=0){
+            if(tab[hold.position_X][hold.position_Y]!=0){
                 continue;
             }
-            tab[hold.position_Y][hold.position_X]=2;
+            tab[hold.position_X][hold.position_Y]=2;
             nonSet.add(hold);
         }
         for(int i = 0; predatorSet.size() < x; i++){
             Predator hold = new Predator(i,rows,columns);
-            if(tab[hold.position_Y][hold.position_X]!=0){
+            if(tab[hold.position_X][hold.position_Y]!=0){
                 continue;
             }
-            tab[hold.position_Y][hold.position_X]=1;
+            tab[hold.position_X][hold.position_Y]=1;
             predatorSet.add(hold);
         }
     }
 
-
+/*
     public void print(int rows, int columns){
+
         System.out.println("There are " + (nonSet.size()+predatorSet.size()) + " fish in the pond.");
         System.out.println( nonSet.size() + " of therm are non predatory.");
         System.out.println( predatorSet.size() + " are the predators.");
@@ -45,6 +46,7 @@ public class Pond{
             }
             System.out.println();
         }
-    }
+*/
 
 }
+

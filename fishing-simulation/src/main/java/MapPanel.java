@@ -1,39 +1,45 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.color.*;
 
 public class MapPanel extends JPanel {
     final int tileSize = 16;
-    final int maxScreenCol = 30;
-    final int maxScreenRow = 20;
-    final int screenWidth = maxScreenCol * tileSize;
-    final int screenHeight = maxScreenRow * tileSize;
-    int [][] Pond;
+    int maxMapCol;
+    int maxMapRow;
+    int mapWidth;
+    int mapHeight;
+    int[][] tab;
 
-    public MapPanel(){
+    public MapPanel(int[][] tab, int columns, int rows){
         this.setLayout(new BorderLayout());
-        this.setPreferredSize(new Dimension(screenWidth, screenHeight));
-        this.setBackground(Color.LIGHT_GRAY);
-        Pond = new int[maxScreenCol][maxScreenRow];
 
-        //this.setDoubleBuffered(true);     don't know what does that actually do
+        maxMapCol = columns;
+        maxMapRow = rows;
+        mapWidth = maxMapCol * tileSize;
+        mapHeight = maxMapRow * tileSize;
+
+        this.setPreferredSize(new Dimension(mapWidth, mapHeight));
+        this.setBackground(Color.blue);
+        this.setDoubleBuffered(true);
+
+        this.tab = tab;
     }
 
-        /*
-        JFrame window = new JFrame();
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setResizable(true);
-        window.setTitle("The Fish Empire");
+    public void paint(Graphics g){
+        Graphics2D g2 = (Graphics2D) g;
+        for(int i = 0; i < maxMapRow; i++){
+            for(int j = 0; j< maxMapCol; j++) {
+                if (tab[i][j] == 1) {
+                    g2.setColor(Color.red);
+                    g2.drawRect(i*tileSize, j*tileSize, tileSize, tileSize);
+                }
+                else if (tab[i][j] == 2) {
+                    g2.setColor(Color.black);
+                    g2.drawRect(i*tileSize, j*tileSize, tileSize, tileSize);
+                }
 
-        MapPanel map = new MapPanel();
-        window.add(map);
-
-        window.pack();
-
-        window.setLocationRelativeTo(null);
-        window.setVisible(true);
-        */
-
+            }
+        }
+    }
 }
 
 
