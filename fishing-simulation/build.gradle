@@ -20,5 +20,5 @@ test {
 }
 
 application{
-    mainClassName = ':Simulation'
+    mainClassName = ':Main'
 }

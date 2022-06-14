@@ -11,7 +11,7 @@ public class Window {
 
         MapPanel mapPanel = new MapPanel(tab, sim.columns, sim.rows);
         window.add(mapPanel, BorderLayout.CENTER);
-        SidePanel sidePanel = new SidePanel(sim);
+        SidePanel sidePanel = new SidePanel(sim, mapPanel);
         window.add(sidePanel, BorderLayout.WEST);
         window.pack();
 
@@ -19,7 +19,7 @@ public class Window {
 
         window.setLocationRelativeTo(null);
         window.setVisible(true);
-        window.setResizable(false);
+        window.setResizable(true);
     }
 
 }

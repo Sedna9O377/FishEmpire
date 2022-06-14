@@ -24,22 +24,24 @@ public class MapPanel extends JPanel {
         this.tab = tab;
     }
 
-    public void paint(Graphics g){
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         for(int i = 0; i < maxMapRow; i++){
             for(int j = 0; j< maxMapCol; j++) {
                 if (tab[i][j] == 1) {
                     g2.setColor(Color.red);
-                    g2.drawRect(i*tileSize, j*tileSize, tileSize, tileSize);
+                    g2.fillRect(i*tileSize, j*tileSize, tileSize, tileSize);
                 }
                 else if (tab[i][j] == 2) {
                     g2.setColor(Color.black);
                     g2.drawRect(i*tileSize, j*tileSize, tileSize, tileSize);
                 }
-
             }
         }
+        g2.dispose();
     }
+
 }
 
 

@@ -15,4 +15,9 @@ public class NonPredator extends Fish{
                 "X=" + position_X +
                 " Y=" + position_Y + " exists!";
     }
+
+    @Override
+    public int[] ChooseDirection() {
+        return super.ChooseDirection();
+    }
 }

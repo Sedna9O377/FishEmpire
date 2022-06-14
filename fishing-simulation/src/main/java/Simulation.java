@@ -6,33 +6,28 @@ public class Simulation{
     int rows;
     int predator_percentage;
     int fish_amount;
+    int initial_fish_amount;
     int[][] tab;
+    Pond pond;
 
-    public static void main(String[] args){
+    public void main(){
 
-        Simulation sim = new Simulation();
-
-        Pond pond = new Pond(sim.fish_amount, sim.rows, sim.columns);
-
-        pond.populate(sim.fish_amount, sim.rows, sim.columns, sim.predator_percentage);
-        //pond.print(sim.rows, sim.columns);
-
-        Window mainWindow = new Window(sim, pond.tab);
+    pond.populate(initial_fish_amount, predator_percentage);
 
     }
 
-    public Simulation() {  //w przyszłości będzie tu input użytkownika
+    public Simulation(Pond pond, int initial_fish_amount) {  //w przyszłości będzie tu input użytkownika
 
-        this.rows = 30;
-        this.columns = 30;
-        this.fish_amount = 100;
+        this.rows = pond.rows;
+        this.columns = pond.columns;
+        this.initial_fish_amount = initial_fish_amount;
+        this.fish_amount = pond.getAmount();
         this.predator_percentage = 50;
+        this.pond = pond;
     }
 
     public void performStep(){
-        //tu wywołać metodę stepu
-
+        System.out.println("Step!");
+        pond.step();
     }
-
-
 }

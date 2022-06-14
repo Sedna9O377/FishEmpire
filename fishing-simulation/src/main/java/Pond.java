@@ -1,17 +1,22 @@
 import java.util.HashSet;
+import java.util.Iterator;
 
 public class Pond{
     private HashSet<NonPredator> nonSet;
     private HashSet<Predator> predatorSet;
+    int rows;
+    int columns;
     int[][] tab;
 
     public Pond(int amount, int rows, int columns) {
         this.nonSet = new HashSet<>(amount);
         this.predatorSet = new HashSet<>(amount);
-         tab = new int[rows][columns];
+        this.rows = rows;
+        this.columns = columns;
+        tab = new int[rows][columns];
     }
 
-    public void populate(int amount, int rows, int columns, int percentage){
+    public void populate(int amount, int percentage){
         int x = Math.round((float) amount * percentage / 100);
 
         for(int i = 0; nonSet.size()+x < amount; i++){
@@ -32,7 +37,39 @@ public class Pond{
         }
     }
 
-/*
+    public void step(){
+        int x = 5 ,y = 7;
+        System.out.println(x+y);
+        Iterator<NonPredator> i = nonSet.iterator();
+
+        /*
+        while(i.hasNext()){
+            i.next();
+
+
+
+
+
+
+
+
+
+        }
+        Iterator<NonPredator> j = nonSet.iterator();
+        while(j.hasNext()){
+            j.next();
+
+
+
+
+        }*/
+    }
+
+    public int getAmount() {
+        return nonSet.size()+predatorSet.size();
+    }
+
+    /*
     public void print(int rows, int columns){
 
         System.out.println("There are " + (nonSet.size()+predatorSet.size()) + " fish in the pond.");

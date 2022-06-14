@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Predator extends Fish{
+public class Predator extends Fish {
 
 
     public Predator(int index, int rows, int columns) {
@@ -15,5 +15,10 @@ public class Predator extends Fish{
         return "Predatory fish no. " + index + " on position " +
                 "X=" + position_X +
                 " Y=" + position_Y + " exists!";
+    }
+
+    @Override
+    public int[] ChooseDirection() {
+        return super.ChooseDirection();
     }
 }
