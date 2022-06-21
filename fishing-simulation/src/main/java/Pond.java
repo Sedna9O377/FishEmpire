@@ -6,28 +6,31 @@ public class Pond{
     private HashSet<Predator> predatorSet;
     int rows;
     int columns;
-    int[][] tab;
+    int step_counter;
+    int[][] tab;    //przechowuje informacje o tym, gdzie są ryby i spławiki
 
-    public Pond(int amount, int rows, int columns) {
-        this.nonSet = new HashSet<>(amount);
-        this.predatorSet = new HashSet<>(amount);
+    public Pond(int rows, int columns) {
+        nonSet = new HashSet<>();
+        predatorSet = new HashSet<>();
         this.rows = rows;
         this.columns = columns;
         tab = new int[rows][columns];
     }
 
     public void populate(int amount, int percentage){
-        int x = Math.round((float) amount * percentage / 100);
+        int predatorAmount = Math.round((float) amount * percentage / 100);  //oblicza liczbę ryb drapieżnych
 
-        for(int i = 0; nonSet.size()+x < amount; i++){
-            NonPredator hold = new NonPredator(i, rows, columns);
-            if(tab[hold.position_X][hold.position_Y]!=0){
+        for(int i = 0; nonSet.size()+ predatorAmount < amount; i++){
+            NonPredator hold = new NonPredator(i, rows, columns);   //tworzy obiekt z przypisanym losowym położeniem
+            if(tab[hold.position_X][hold.position_Y]!=0){   //powtarza czynność, jeśli położenie jest już zajęte
                 continue;
             }
-            tab[hold.position_X][hold.position_Y]=2;
+            tab[hold.position_X][hold.position_Y]=2;    //"zajmuje" pozycję w tablicy
             nonSet.add(hold);
         }
-        for(int i = 0; predatorSet.size() < x; i++){
+
+        /* powyższe czynności są powtórzone dla ryb drapieżnych */
+        for(int i = 0; predatorSet.size() < predatorAmount; i++){
             Predator hold = new Predator(i,rows,columns);
             if(tab[hold.position_X][hold.position_Y]!=0){
                 continue;
@@ -37,53 +40,64 @@ public class Pond{
         }
     }
 
+
     public void step(){
-        int x = 5 ,y = 7;
-        System.out.println(x+y);
-        Iterator<NonPredator> i = nonSet.iterator();
+        step_counter++;
 
-        /*
-        while(i.hasNext()){
-            i.next();
-
-
-
-
-
-
-
-
-
+        if(step_counter%10 == 0){
+            //zmiana miejsca łowienia przez rybaków
         }
-        Iterator<NonPredator> j = nonSet.iterator();
-        while(j.hasNext()){
-            j.next();
 
+        Iterator<NonPredator> It1 = nonSet.iterator();
+        while(It1.hasNext()) {
+            NonPredator fish = It1.next();
 
+            int[] coords = fish.ChooseDirection();          //wylosowanie proponowanego przemieszczenia
+            if(coords[0] >= 0 && coords[1] >= 0 && coords[0] < rows && coords[1] < columns ){         //przemieszczenie na to pole tylko jeśli propozycja mieści się w obszarze tablicy i pole jest wolne
+                if (tab[coords[0]][coords[1]] == 0) {
+                    tab[fish.position_X][fish.position_Y] = 0;
+                    fish.position_X = coords[0];
+                    fish.position_Y = coords[1];
+                    tab[coords[0]][coords[1]] = 2;
+                }
+                else if (tab[coords[0]][coords[1]] == 9){
+                    //ryba zostaje złowiona
+                }
 
+            }
+        }
 
-        }*/
+        Iterator<Predator> It2 = predatorSet.iterator();
+        while(It2.hasNext()){
+            Predator fish = It2.next();
+
+            int[] coords = fish.ChooseDirection();          //wylosowanie proponowanego przemieszczenia
+            if(coords[0] >= 0 && coords[1] >= 0 && coords[0] < rows && coords[1] < columns ){         //przemieszczenie na to pole tylko jeśli propozycja mieści się w obszarze tablicy i pole jest wolne
+                if (tab[coords[0]][coords[1]] == 0) {
+                    tab[fish.position_X][fish.position_Y] = 0;
+                    fish.position_X = coords[0];
+                    fish.position_Y = coords[1];
+                    tab[coords[0]][coords[1]] = 1;
+                }
+                else if(tab[coords[0]][coords[1]] == 2) {
+                    Iterator<NonPredator> It3 = nonSet.iterator();
+                    while(It3.hasNext()) {
+                        NonPredator fish3 = It3.next();
+                        if(fish3.position_X == coords[0] && fish3.position_Y == coords[1]){
+                            It3.remove();
+                            tab[coords[0]][coords[1]] = 0;
+                        }
+                    }
+                }
+            }
+        }
     }
+
+
 
     public int getAmount() {
         return nonSet.size()+predatorSet.size();
     }
-
-    /*
-    public void print(int rows, int columns){
-
-        System.out.println("There are " + (nonSet.size()+predatorSet.size()) + " fish in the pond.");
-        System.out.println( nonSet.size() + " of therm are non predatory.");
-        System.out.println( predatorSet.size() + " are the predators.");
-        //Iterator i = nonSet.iterator();
-
-        for(int j = 0; j<rows;j++){
-            for(int k = 0; k<columns; k++){
-                System.out.print(tab[j][k]);
-            }
-            System.out.println();
-        }
-*/
 
 }
 

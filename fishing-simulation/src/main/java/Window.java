@@ -19,7 +19,7 @@ public class Window {
 
         window.setLocationRelativeTo(null);
         window.setVisible(true);
-        window.setResizable(true);
+        window.setResizable(false);
     }
 
 }

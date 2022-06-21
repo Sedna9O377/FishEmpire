@@ -2,7 +2,6 @@ import java.util.Random;
 
 public class Predator extends Fish {
 
-
     public Predator(int index, int rows, int columns) {
         Random rand = new Random();
         position_X = rand.nextInt(rows);
@@ -15,10 +14,5 @@ public class Predator extends Fish {
         return "Predatory fish no. " + index + " on position " +
                 "X=" + position_X +
                 " Y=" + position_Y + " exists!";
-    }
-
-    @Override
-    public int[] ChooseDirection() {
-        return super.ChooseDirection();
     }
 }

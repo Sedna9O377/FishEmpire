@@ -18,7 +18,7 @@ public class MapPanel extends JPanel {
         mapHeight = maxMapRow * tileSize;
 
         this.setPreferredSize(new Dimension(mapWidth, mapHeight));
-        this.setBackground(Color.blue);
+        this.setBackground(new Color(200, 240, 255));
         this.setDoubleBuffered(true);
 
         this.tab = tab;
@@ -30,15 +30,16 @@ public class MapPanel extends JPanel {
         for(int i = 0; i < maxMapRow; i++){
             for(int j = 0; j< maxMapCol; j++) {
                 if (tab[i][j] == 1) {
-                    g2.setColor(Color.red);
-                    g2.fillRect(i*tileSize, j*tileSize, tileSize, tileSize);
+                    g2.setColor(new Color(205,60,50));
+                    g2.fillRect(j*tileSize, i*tileSize, tileSize, tileSize);
                 }
                 else if (tab[i][j] == 2) {
                     g2.setColor(Color.black);
-                    g2.drawRect(i*tileSize, j*tileSize, tileSize, tileSize);
+                    g2.fillRect(j*tileSize, i*tileSize, tileSize, tileSize);
                 }
             }
         }
+
         g2.dispose();
     }
 

@@ -4,12 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SidePanel extends JPanel {
-    final int width = 250;
-    final int height = 200;
+    final int width = 200;
+    final int height = 50;
     MapPanel mapPanel;
 
     public SidePanel(Simulation sim, MapPanel mapPanel){
-        this.setLayout(new BorderLayout());
+        this.setLayout(new GridLayout(10,1));
         this.setPreferredSize(new Dimension(width, height));
         this.setBackground(Color.lightGray);
         this.setDoubleBuffered(true);
@@ -24,9 +24,18 @@ public class SidePanel extends JPanel {
             }
         });
 
-        //JTextArea text = new JTextArea("No i co",10,1);
-        //this.add(text, BorderLayout.SOUTH);
+        JButton move10Button = new JButton("10 Steps forward");
+        move10Button.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(int i=0; i<10; i++)
+                    sim.performStep();
+                mapPanel.repaint();
+            }
+        });
+
         this.add(moveButton);
+        this.add(move10Button);
     }
 
 

@@ -12,22 +12,21 @@ public class Simulation{
 
     public void main(){
 
-    pond.populate(initial_fish_amount, predator_percentage);
+    pond.populate(initial_fish_amount, predator_percentage);    // zapełnia staw odpowiednią liczbą ryb drapieżnych i niedrapieżnych
 
     }
 
-    public Simulation(Pond pond, int initial_fish_amount) {  //w przyszłości będzie tu input użytkownika
+    public Simulation(Pond pond, int initial_fish_amount, int predator_percentage) {  //w przyszłości będzie tu input użytkownika
 
         this.rows = pond.rows;
         this.columns = pond.columns;
         this.initial_fish_amount = initial_fish_amount;
         this.fish_amount = pond.getAmount();
-        this.predator_percentage = 50;
+        this.predator_percentage = predator_percentage;
         this.pond = pond;
     }
 
     public void performStep(){
-        System.out.println("Step!");
         pond.step();
     }
 }
