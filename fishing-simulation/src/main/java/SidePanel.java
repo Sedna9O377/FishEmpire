@@ -5,11 +5,11 @@ import java.awt.event.ActionListener;
 
 public class SidePanel extends JPanel {
     final int width = 200;
-    final int height = 50;
+    final int height = 200;
     MapPanel mapPanel;
 
     public SidePanel(Simulation sim, MapPanel mapPanel){
-        this.setLayout(new GridLayout(10,1));
+        this.setLayout(new GridLayout(7,1));
         this.setPreferredSize(new Dimension(width, height));
         this.setBackground(Color.lightGray);
         this.setDoubleBuffered(true);

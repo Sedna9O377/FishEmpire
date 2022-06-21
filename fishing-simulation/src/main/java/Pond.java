@@ -95,9 +95,9 @@ public class Pond{
 
 
 
-    public int getAmount() {
-        return nonSet.size()+predatorSet.size();
-    }
+    public int getAmount() { return nonSet.size()+predatorSet.size();}
+    public int getPredator() { return predatorSet.size();}
+    public int getNonPredator() { return nonSet.size();}
 
 }
 

@@ -27,6 +27,8 @@ public class MapPanel extends JPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+        g2.setColor(Color.lightGray);
+        g2.fillRect(0,mapHeight,mapWidth,200);
         for(int i = 0; i < maxMapRow; i++){
             for(int j = 0; j< maxMapCol; j++) {
                 if (tab[i][j] == 1) {

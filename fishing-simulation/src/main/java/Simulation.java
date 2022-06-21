@@ -1,5 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 public class Simulation{
     int columns;
@@ -7,8 +10,8 @@ public class Simulation{
     int predator_percentage;
     int fish_amount;
     int initial_fish_amount;
-    int[][] tab;
     Pond pond;
+    int stepcounter;
 
     public void main(){
 
@@ -28,5 +31,19 @@ public class Simulation{
 
     public void performStep(){
         pond.step();
+        stepcounter++;
+    }
+    public void makeFile () throws FileNotFoundException {
+        File file = new File("plik.txt");
+        PrintWriter writer = new PrintWriter(file);
+        writer.println("Wymiary " + columns + " x " + rows);
+        writer.println("Liczba ryb: " + initial_fish_amount);
+        writer.println("Początkowa liczba ryb drapieżnych: " + Math.round((float)predator_percentage*initial_fish_amount/100));
+        writer.println("Początkowa liczba ryb niedrapieżnych: " + Math.round(initial_fish_amount-(float)predator_percentage*initial_fish_amount/100));
+        writer.println("Liczba wykonanych kroków przed zamknięciem symulacji: " + stepcounter);
+        writer.println("Końcowa liczba ryb: " + pond.getAmount());
+        writer.println("Liczba ryb drapieżnych: " + pond.getPredator());
+        writer.println("Liczba ryb niedrapieżnych: " + pond.getNonPredator());
+        writer.close();
     }
 }
